@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react"
 import Folder from "./Folder.js"
+import File from "./File.js"
 import axios from "axios"
 
 const headers={
@@ -26,15 +27,16 @@ function App() {
       return true
     }
   })
-  console.log(folderArray)
-  const data = folderArray.map(element => element[0])
 
   return (
     <div className="App">
       <h1>Hello React</h1>
-      <Folder data={data} />
+      {folderArray.map((element,i)=>{
+        return Array.isArray(element[1]) ? <Folder title={element[0]} file={element[1]} key={i}/> : <File title={element[0]} inFolder={false} key={i}/>
+      })}
+      
     </div>
   );
 }
 
-export default App;
+export default App

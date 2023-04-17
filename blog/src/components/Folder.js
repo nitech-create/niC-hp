@@ -1,18 +1,29 @@
-import React, { Component } from 'react';
-import FolderItem from './FolderItem';
+import React, { Component } from 'react'
+import File from './File.js'
 
-class Folder extends Component {
+class Folder extends Component {    
+  constructor(props){
+  super(props)
+  this.state = {
+      visible:false,
+      data:this.props.data,
+      component:this.props.component,
+  }
+}
   render() {
 
-    const { data,component } = this.props;
+    const { title,file,component } = this.props;
 
-    let ChildComponent = component || FolderItem;
+    let ChildComponent = component || File;
 
     return(
+
       <ul>
-        {data.map((text, i) => {
-          return React.createElement(ChildComponent, { key: i, text })
-        })}
+      <button type='button' onClick={()=>{this.setState({visible:!this.state.visible})}}>{title}</button>
+        {this.state.visible&&file.map(((element,i)=>{
+          return React.createElement(ChildComponent,{key:title+i,title:element.title,inFolder:[title,i]})
+        }))
+        }
       </ul>
     );
   }
