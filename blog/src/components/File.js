@@ -16,14 +16,14 @@ class File extends Component {
         if(this.state.inFolder){
             return(
               <li>
-                <button type='button' onClick={()=>{this.setState({visible:!this.state.visible})}}>{title}</button>
+                <button type='button' onDoubleClick={()=>{this.setState({visible:!this.state.visible})}}>{title}</button>
                 {this.state.visible&&React.createElement(ChildComponent,{key:title+this.state.inFolder[0],title,inFolder:this.props.inFolder})}
               </li>
             );
         }else{
       return(
         <div>
-          <button type='button' onClick={()=>{this.setState({visible:!this.state.visible})}}>{title}</button>
+          <button type='button' onDoubleClick={()=>{this.setState({visible:!this.state.visible})}}>{title}</button>
           {this.state.visible&&React.createElement(ChildComponent,{title,inFolder:this.props.inFolder})}
         </div>
       );
