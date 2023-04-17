@@ -25,9 +25,9 @@ class Folder extends Component {
           this.setState({ folderCount: this.state.folderCount + 1 })
         }}>{title}</button>
         {this.state.windowArray.map((i) => {
-          
-            return React.createElement(ChildComponent, { key: title + i, file,title })
-          
+
+          return React.createElement(ChildComponent, { key: title + i, file, title })
+
         })}
       </div>
     );

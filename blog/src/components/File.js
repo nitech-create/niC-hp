@@ -12,34 +12,34 @@ class File extends Component {
     }
   }
   render() {
-      const { component } = this.props;
-      let ChildComponent = component || Window
-      const title = this.state.title
-      if (this.state.inFolder) {
-        return (
-          <li>
-            <button type='button' onClick={() => {
-              this.setState({ windowArray: [...this.state.windowArray, this.state.windowCount] })
-              this.setState({ windowCount: this.state.windowCount + 1 })
-            }}>{title}</button>
-            {this.state.windowArray.map((i) => {
-              return React.createElement(ChildComponent, { key: title + i + this.state.inFolder[0], title, inFolder: this.props.inFolder })
-            })}
-          </li>
-        )
-      } else {
-        return (
-          <div>
-            <button type='button' onClick={() => {
-              this.setState({ windowArray: [...this.state.windowArray, this.state.windowCount] })
-              this.setState({ windowCount: this.state.windowCount + 1 })
-            }}>{title}</button>
-            {this.state.windowArray.map((i) => {
-              return React.createElement(ChildComponent, { key: title + i, title, inFolder: this.props.inFolder })
-            })}
-          </div>
-        )
-      }
+    const { component } = this.props;
+    let ChildComponent = component || Window
+    const title = this.state.title
+    if (this.state.inFolder) {
+      return (
+        <li>
+          <button type='button' onClick={() => {
+            this.setState({ windowArray: [...this.state.windowArray, this.state.windowCount] })
+            this.setState({ windowCount: this.state.windowCount + 1 })
+          }}>{title}</button>
+          {this.state.windowArray.map((i) => {
+            return React.createElement(ChildComponent, { key: title + i + this.state.inFolder[0], title, inFolder: this.props.inFolder })
+          })}
+        </li>
+      )
+    } else {
+      return (
+        <div>
+          <button type='button' onClick={() => {
+            this.setState({ windowArray: [...this.state.windowArray, this.state.windowCount] })
+            this.setState({ windowCount: this.state.windowCount + 1 })
+          }}>{title}</button>
+          {this.state.windowArray.map((i) => {
+            return React.createElement(ChildComponent, { key: title + i, title, inFolder: this.props.inFolder })
+          })}
+        </div>
+      )
+    }
 
   }
 }

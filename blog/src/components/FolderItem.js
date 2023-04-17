@@ -17,7 +17,7 @@ class FolderItem extends Component {
         const { title, file, component } = this.props;
         let ChildComponent = component || File;
         return (
-            <ul style={{visibility: this.state.visible?"visible":"hidden"}}>
+            <ul style={{ visibility: this.state.visible ? "visible" : "hidden" }}>
                 <button type='button' onClick={() => {
                     this.setState({ visible: false })
                 }}>Delete</button>
