@@ -12,7 +12,7 @@ class Window extends Component {
             post: null,
             title: props.title,
             inFolder: props.inFolder,
-            visible:true
+            visible: true
         }
         axios.get(baseUrl, { headers: headers }).then((response) => {
             this.setState({ post: response.data })
@@ -20,16 +20,16 @@ class Window extends Component {
     }
 
     render() {
-        if(this.state.visible){
+        if (this.state.visible) {
 
             if (!this.state.post) return null
             if (this.props.inFolder) {
                 const blackList = ["fieldId"]
                 const postObj = this.state.post[this.props.inFolder[0]][this.props.inFolder[1]]
                 return (
-                    <div>
+                    <div style={{ visibility: "visible" }}>
                         <button type='button' onClick={() => {
-                            this.setState({visible:false})
+                            this.setState({ visible: false })
                         }}>Delete</button>
                         <h2>{this.state.title} {String(this.props.inFolder)}</h2>
                         {Object.keys(postObj).filter((item) => {
@@ -41,19 +41,22 @@ class Window extends Component {
                             } else {
                                 return React.createElement("div", { key: i }, <div dangerouslySetInnerHTML={{ __html: postObj[element] }}></div>)
                             }
-    
+
                         })}
                     </div>
                 )
             } else {
                 return (
                     <div>
+                        <button type='button' onClick={() => {
+                            this.setState({ visible: false })
+                        }}>Delete</button>
                         <h2>{this.state.title} {String(this.props.inFolder)}</h2>
                         <div dangerouslySetInnerHTML={{ __html: this.state.post[this.state.title] }}></div>
                     </div>
                 )
             }
-        }else{
+        } else {
             return null
         }
     }

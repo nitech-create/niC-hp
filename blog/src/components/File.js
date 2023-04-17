@@ -12,16 +12,12 @@ class File extends Component {
     }
   }
   render() {
-    if (this.state.visible) {
       const { component } = this.props;
       let ChildComponent = component || Window
       const title = this.state.title
       if (this.state.inFolder) {
         return (
           <li>
-            <button type='button' onClick={() => {
-              this.setState({ visible: false })
-            }}>Delete</button>
             <button type='button' onClick={() => {
               this.setState({ windowArray: [...this.state.windowArray, this.state.windowCount] })
               this.setState({ windowCount: this.state.windowCount + 1 })
@@ -44,9 +40,6 @@ class File extends Component {
           </div>
         )
       }
-    } else {
-      return null
-    }
 
   }
 }
