@@ -8,6 +8,8 @@ class Folder extends Component {
       visible:false,
       data:this.props.data,
       component:this.props.component,
+      folderCount: 0,
+      windowArray: []
   }
 }
   render() {
@@ -19,11 +21,15 @@ class Folder extends Component {
     return(
 
       <ul>
-      <button type='button' onDoubleClick={()=>{this.setState({visible:!this.state.visible})}}>{title}</button>
-        {this.state.visible&&file.map(((element,i)=>{
-          return React.createElement(ChildComponent,{key:title+i,title:element.title,inFolder:[title,i]})
-        }))
-        }
+      <button type='button' onClick={()=>{
+            this.setState({ windowArray: [...this.state.windowArray, this.state.folderCount] })
+            this.setState({ folderCount: this.state.folderCount + 1 })
+          }}>{title}</button>
+          {this.state.windowArray.map((i) => {
+            return file.map(((element,j)=>{
+              return React.createElement(ChildComponent,{key:title+i+j,title:element.title,inFolder:[title,j]})
+            }))
+          })}
       </ul>
     );
   }
