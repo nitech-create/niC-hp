@@ -11,7 +11,8 @@ class Window extends Component {
         this.state = {
             post: null,
             title: props.title,
-            inFolder: props.inFolder
+            inFolder: props.inFolder,
+            visible:true
         }
         axios.get(baseUrl, { headers: headers }).then((response) => {
             this.setState({ post: response.data })
@@ -19,34 +20,41 @@ class Window extends Component {
     }
 
     render() {
-        if (!this.state.post) return null
-        if (this.props.inFolder) {
-            const blackList=["fieldId"]
-            const postObj = this.state.post[this.props.inFolder[0]][this.props.inFolder[1]]
+        if(this.state.visible){
 
-            return (
-                <div>
-                    <h2>{this.state.title} {String(this.props.inFolder)}</h2>
-                    {Object.keys(postObj).filter((item)=>{
-                        return !blackList.includes(item)
-                    }).map((element, i) => {
-                        console.log(postObj[element])
-                        if(postObj[element]!==null&& typeof postObj[element] === 'object'){
-                            return React.createElement("div", {key:i}, <img src={postObj[element].url} alt="profile"></img>)
-                        }else{
-                            return React.createElement("div", {key:i}, <div dangerouslySetInnerHTML={{ __html: postObj[element] }}></div>)
-                        }
-                        
-                    })}
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    <h2>{this.state.title} {String(this.props.inFolder)}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: this.state.post[this.state.title] }}></div>
-                </div>
-            )
+            if (!this.state.post) return null
+            if (this.props.inFolder) {
+                const blackList = ["fieldId"]
+                const postObj = this.state.post[this.props.inFolder[0]][this.props.inFolder[1]]
+                return (
+                    <div>
+                        <button type='button' onClick={() => {
+                            this.setState({visible:false})
+                        }}>Delete</button>
+                        <h2>{this.state.title} {String(this.props.inFolder)}</h2>
+                        {Object.keys(postObj).filter((item) => {
+                            return !blackList.includes(item)
+                        }).map((element, i) => {
+                            console.log(postObj[element])
+                            if (postObj[element] !== null && typeof postObj[element] === 'object') {
+                                return React.createElement("div", { key: i }, <img src={postObj[element].url} alt="profile"></img>)
+                            } else {
+                                return React.createElement("div", { key: i }, <div dangerouslySetInnerHTML={{ __html: postObj[element] }}></div>)
+                            }
+    
+                        })}
+                    </div>
+                )
+            } else {
+                return (
+                    <div>
+                        <h2>{this.state.title} {String(this.props.inFolder)}</h2>
+                        <div dangerouslySetInnerHTML={{ __html: this.state.post[this.state.title] }}></div>
+                    </div>
+                )
+            }
+        }else{
+            return null
         }
     }
 }
