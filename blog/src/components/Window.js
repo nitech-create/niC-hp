@@ -14,13 +14,14 @@ class Window extends Component {
             title: props.title,
             inFolder: props.inFolder,
             visible: true,
-            zIndex: "auto"
+            zIndex: window.zIndex
         }
         axios.get(baseUrl, { headers: headers }).then((response) => {
             this.setState({ post: response.data })
         }).catch(error => console.log(error))
     }
     onDragStart = () => {
+        window.zIndex+=100
         this.setState({ zIndex: window.zIndex })
         window.zIndex += 100
     }

@@ -8,10 +8,11 @@ class FolderItem extends Component {
             visible: true,
             data: this.props.data,
             component: this.props.component,
-            zIndex: "auto"
+            zIndex: window.zIndex
         }
     }
     onDragStart=()=>{
+        window.zIndex+=100
         this.setState({zIndex:window.zIndex})
         window.zIndex+=100
 
