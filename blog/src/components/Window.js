@@ -13,17 +13,22 @@ class Window extends Component {
             post: null,
             title: props.title,
             inFolder: props.inFolder,
-            visible: true
+            visible: true,
+            zIndex: "auto"
         }
         axios.get(baseUrl, { headers: headers }).then((response) => {
             this.setState({ post: response.data })
         }).catch(error => console.log(error))
     }
+    onDragStart = () => {
+        this.setState({ zIndex: window.zIndex })
+        window.zIndex += 100
+    }
 
     render() {
         if (this.state.visible) {
-            const offsetHeight=500
-            const offsetWidth=0
+            const offsetHeight = 500
+            const offsetWidth = 0
             if (!this.state.post) return null
             if (this.props.inFolder) {
                 const blackList = ["fieldId"]
@@ -31,11 +36,12 @@ class Window extends Component {
                 return (
                     <Rnd
                         className="window"
-                        style={{ visibility: "visible", position: "fixed" }}
-                        default={{x: Math.floor(Math.random()*(window.innerWidth/2-offsetWidth)), y: Math.floor(Math.random()*(window.innerHeight-offsetHeight)), width: 300, height: 300 }}
+                        style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
+                        default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight - offsetHeight)), width: 300, height: 300 }}
                         minHeight={300}
                         minWidth={300}
                         enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
+                        onDragStart={this.onDragStart}
                     >
 
                         <div >
@@ -62,12 +68,12 @@ class Window extends Component {
 
                     <Rnd
                         className="window"
-                        style={{ visibility: "visible", position: "fixed" }}
-                        default={{ x: Math.floor(Math.random()*(window.innerWidth/2-offsetWidth)), y: Math.floor(Math.random()*(window.innerHeight-offsetHeight)), width: 300, height: 300 }}
+                        style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
+                        default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight - offsetHeight)), width: 300, height: 300 }}
                         enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
-                
                         minHeight={300}
                         minWidth={300}
+                        onDragStart={this.onDragStart}
                     >
 
                         <div >

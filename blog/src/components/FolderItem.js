@@ -8,8 +8,15 @@ class FolderItem extends Component {
             visible: true,
             data: this.props.data,
             component: this.props.component,
+            zIndex: "auto"
         }
     }
+    onDragStart=()=>{
+        this.setState({zIndex:window.zIndex})
+        window.zIndex+=100
+
+    }
+
     render() {
         const offsetHeight=0
         const offsetWidth=300
@@ -18,11 +25,12 @@ class FolderItem extends Component {
         return (
             <Rnd
                 className='folderwindow'
-                style={{ visibility: this.state.visible ? "visible" : "hidden", position: "absolute" }}
+                style={{ zIndex:this.state.zIndex,visibility: this.state.visible ? "visible" : "hidden", position: "absolute" }}
                 default={{ x: Math.floor(Math.random()*(window.innerWidth/2-offsetWidth)), y: Math.floor(Math.random()*(window.innerHeight-offsetHeight)), width: 300, height: 300 }}
                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                 minHeight={300}
                 minWidth={300}
+                onDragStart={this.onDragStart}
             >
                 <ul>
                     <button className='deletebutton' type='button' onClick={() => {
