@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Folder from "./Folder.js"
 import File from "./File.js"
 import axios from "axios"
-
+import Window from "./Window.js"
 const headers = {
   "X-MICROCMS-API-KEY": "38a97b930fe94fb181f45abfb215f4886c60"
 }
@@ -10,6 +10,7 @@ const baseUrl = "https://nitech-create.microcms.io/api/v1/others"
 
 
 function App() {
+  const[windowArray,setWindowArray]=useState([])
   const [post, setPost] = useState(null)
   useEffect(() => {
     axios.get(baseUrl, { headers: headers }).then((response) => {
@@ -32,7 +33,10 @@ function App() {
     <div className="App">
       <h1>Hello React</h1>
       {folderArray.map((element, i) => {
-        return Array.isArray(element[1]) ? <Folder title={element[0]} file={element[1]} key={i} /> : <File title={element[0]} inFolder={false} key={i} />
+        return Array.isArray(element[1]) ? <Folder windowArray={windowArray} setWindowArray={setWindowArray} title={element[0]} file={element[1]} key={i} /> : <File title={element[0]} inFolder={false} key={i} />
+      })}
+      {windowArray.map((element,i)=>{
+        return <Window key={element.title + i + element.inFolder[0]}  title={element.title} inFolder={element.inFolder} />
       })}
 
     </div>

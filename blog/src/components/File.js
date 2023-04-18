@@ -19,12 +19,10 @@ class File extends Component {
       return (
         <li>
           <button type='button' onClick={() => {
-            this.setState({ windowArray: [...this.state.windowArray, this.state.windowCount] })
+            this.props.setWindowArray([...this.props.windowArray,{title:title,inFolder:this.props.inFolder}])
             this.setState({ windowCount: this.state.windowCount + 1 })
           }}>{title}</button>
-          {this.state.windowArray.map((i) => {
-            return React.createElement(ChildComponent, { key: title + i + this.state.inFolder[0], title, inFolder: this.props.inFolder })
-          })}
+
         </li>
       )
     } else {

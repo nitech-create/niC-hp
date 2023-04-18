@@ -9,24 +9,22 @@ class Folder extends Component {
       data: this.props.data,
       component: this.props.component,
       folderCount: 0,
-      windowArray: [],
+      folderArray:[]
     }
   }
   render() {
-
     const { title, file, component } = this.props;
     let ChildComponent = component || FolderItem;
-    console.log(title)
     return (
 
       <div>
         <button type='button' onClick={() => {
-          this.setState({ windowArray: [...this.state.windowArray, this.state.folderCount] })
+          this.setState({ folderArray: [...this.state.folderArray, this.state.folderCount] })
           this.setState({ folderCount: this.state.folderCount + 1 })
         }}>{title}</button>
-        {this.state.windowArray.map((i) => {
+        {this.state.folderArray.map((i) => {
 
-          return React.createElement(ChildComponent, { key: title + i, file, title })
+          return React.createElement(ChildComponent, { windowArray:this.props.windowArray ,setWindowArray:this.props.setWindowArray,key: title + i, file, title })
 
         })}
       </div>
