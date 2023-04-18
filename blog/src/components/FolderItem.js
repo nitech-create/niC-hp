@@ -18,8 +18,8 @@ class FolderItem extends Component {
     }
 
     render() {
-        const offsetHeight=0
-        const offsetWidth=300
+        const offsetHeight=500
+        const offsetWidth=0
         const { title, file, component } = this.props;
         let ChildComponent = component || File;
         return (
@@ -31,6 +31,7 @@ class FolderItem extends Component {
                 minHeight={300}
                 minWidth={300}
                 onDragStart={this.onDragStart}
+                onResizeStart={this.onDragStart}
             >
                 <ul>
                     <button className='deletebutton' type='button' onClick={() => {

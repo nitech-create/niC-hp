@@ -42,6 +42,7 @@ class Window extends Component {
                         minWidth={300}
                         enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                         onDragStart={this.onDragStart}
+                        onResizeStart={this.onDragStart}
                     >
 
                         <div >
@@ -74,6 +75,7 @@ class Window extends Component {
                         minHeight={300}
                         minWidth={300}
                         onDragStart={this.onDragStart}
+                        onResizeStart={this.onDragStart}
                     >
 
                         <div >

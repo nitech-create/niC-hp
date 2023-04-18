@@ -11,6 +11,7 @@ ul {
 .folderwindow{
     border:1px solid gray;
     background-color: white;
+    overflow: scroll;
 }
 
 .folderbutton{
@@ -26,4 +27,5 @@ ul {
 .window{
     background-color: white;
     border: 1px solid gray;
+    overflow: scroll;
 }
