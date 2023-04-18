@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import File from './File.js'
-import Draggable from 'react-draggable';
+import { Rnd } from 'react-rnd'
 class FolderItem extends Component {
     constructor(props) {
         super(props)
@@ -11,23 +11,28 @@ class FolderItem extends Component {
         }
     }
     render() {
-        
+
         const { title, file, component } = this.props;
         let ChildComponent = component || File;
         return (
-            <Draggable
-            defaultPosition={{x: 0, y: 0}}
+            <Rnd
+                className='folderwindow'
+                style={{ visibility: this.state.visible ? "visible" : "hidden", position: "absolute" }}
+                default={{ x: 0, y: 0, width: 300, height: 300 }}
+                enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
+                minHeight={300}
+                minWidth={300}
             >
-            <ul style={{ visibility: this.state.visible ? "visible" : "hidden" , position:"absolute"}}>
-                <button type='button' onClick={() => {
-                    this.setState({ visible: false })
-                }}>Delete</button>
-                {file.map(((element, i) => {
-                    return React.createElement(ChildComponent, { windowArray:this.props.windowArray,setWindowArray:this.props.setWindowArray,key: title + i, title: element.title, inFolder: [title, i] })
-                }))
-                }
-            </ul>
-            </Draggable>
+                <ul>
+                    <button className='deletebutton' type='button' onClick={() => {
+                        this.setState({ visible: false })
+                    }}>Delete</button>
+                    {file.map(((element, i) => {
+                        return React.createElement(ChildComponent, { windowArray: this.props.windowArray, setWindowArray: this.props.setWindowArray, key: title + i, title: element.title, inFolder: [title, i] })
+                    }))
+                    }
+                </ul>
+            </Rnd>
 
         );
     }

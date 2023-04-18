@@ -1,0 +1,29 @@
+ul {
+    list-style-type: none;
+}
+
+.file button{
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    
+}
+.folderwindow{
+    border:1px solid gray;
+    background-color: white;
+}
+
+.folderbutton{
+    background-color: wheat;
+    width: 60px;
+    height: 60px;
+}
+
+.deletebutton{
+    background-color: white;
+}
+
+.window{
+    background-color: white;
+    border: 1px solid gray;
+}

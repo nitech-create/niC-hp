@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import axios from "axios"
-import Draggable from "react-draggable"
+import { Rnd } from "react-rnd"
 const baseUrl = "https://nitech-create.microcms.io/api/v1/others/"
 
 const headers = {
@@ -28,12 +28,17 @@ class Window extends Component {
                 const blackList = ["fieldId"]
                 const postObj = this.state.post[this.props.inFolder[0]][this.props.inFolder[1]]
                 return (
-                    <Draggable
-                    defaultPosition={{x: 0, y: 0}}
+                    <Rnd
+                        className="window"
+                        style={{ visibility: "visible", position: "fixed" }}
+                        default={{ x: 0, y: 0, width: 300, height: 300 }}
+                        minHeight={300}
+                        minWidth={300}
+                        enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                     >
 
-                        <div style={{ visibility: "visible",position:"fixed" }}>
-                            <button type='button' onClick={() => {
+                        <div >
+                            <button className="deletebutton" type='button' onClick={() => {
                                 this.setState({ visible: false })
                             }}>Delete</button>
                             <h2>{this.state.title} {String(this.props.inFolder)}</h2>
@@ -49,23 +54,30 @@ class Window extends Component {
                             })}
                         </div>
 
-                    </Draggable>
+                    </Rnd>
                 )
             } else {
                 return (
 
-                    <Draggable
-                    defaultPosition={{x: 0, y: 0}}>
+                    <Rnd
+                        className="window"
+                        style={{ visibility: "visible", position: "fixed" }}
+                        default={{ x: 0, y: 0, width: 300, height: 300 }}
+                        enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
+                
+                        minHeight={300}
+                        minWidth={300}
+                    >
 
-                    <div style={{ visibility: "visible",position:"fixed" }}>
-                        <button type='button' onClick={() => {
-                            this.setState({ visible: false })
-                        }}>Delete</button>
-                        <h2>{this.state.title} {String(this.props.inFolder)}</h2>
-                        <div dangerouslySetInnerHTML={{ __html: this.state.post[this.state.title] }}></div>
-                    </div>
+                        <div >
+                            <button className="deletebutton" type='button' onClick={() => {
+                                this.setState({ visible: false })
+                            }}>Delete</button>
+                            <h2>{this.state.title} {String(this.props.inFolder)}</h2>
+                            <div dangerouslySetInnerHTML={{ __html: this.state.post[this.state.title] }}></div>
+                        </div>
 
-                    </Draggable>
+                    </Rnd>
 
                 )
             }

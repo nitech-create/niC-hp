@@ -17,8 +17,8 @@ class Folder extends Component {
     let ChildComponent = component || FolderItem;
     return (
 
-      <div>
-        <button type='button' onClick={() => {
+      <div className='folder'>
+        <button  className='folderbutton' type='button' onClick={() => {
           this.setState({ folderArray: [...this.state.folderArray, this.state.folderCount] })
           this.setState({ folderCount: this.state.folderCount + 1 })
         }}>{title}</button>

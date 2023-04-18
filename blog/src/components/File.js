@@ -17,7 +17,7 @@ class File extends Component {
     const title = this.state.title
     if (this.state.inFolder) {
       return (
-        <li>
+        <li className="file">
           <button type='button' onClick={() => {
             this.props.setWindowArray([...this.props.windowArray,{title:title,inFolder:this.props.inFolder}])
             this.setState({ windowCount: this.state.windowCount + 1 })
@@ -27,7 +27,7 @@ class File extends Component {
       )
     } else {
       return (
-        <div>
+        <div className="file">
           <button type='button' onClick={() => {
             this.setState({ windowArray: [...this.state.windowArray, this.state.windowCount] })
             this.setState({ windowCount: this.state.windowCount + 1 })
