@@ -22,7 +22,8 @@ class Window extends Component {
 
     render() {
         if (this.state.visible) {
-
+            const offsetHeight=500
+            const offsetWidth=0
             if (!this.state.post) return null
             if (this.props.inFolder) {
                 const blackList = ["fieldId"]
@@ -31,7 +32,7 @@ class Window extends Component {
                     <Rnd
                         className="window"
                         style={{ visibility: "visible", position: "fixed" }}
-                        default={{ x: 0, y: 0, width: 300, height: 300 }}
+                        default={{x: Math.floor(Math.random()*(window.innerWidth/2-offsetWidth)), y: Math.floor(Math.random()*(window.innerHeight-offsetHeight)), width: 300, height: 300 }}
                         minHeight={300}
                         minWidth={300}
                         enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
@@ -62,7 +63,7 @@ class Window extends Component {
                     <Rnd
                         className="window"
                         style={{ visibility: "visible", position: "fixed" }}
-                        default={{ x: 0, y: 0, width: 300, height: 300 }}
+                        default={{ x: Math.floor(Math.random()*(window.innerWidth/2-offsetWidth)), y: Math.floor(Math.random()*(window.innerHeight-offsetHeight)), width: 300, height: 300 }}
                         enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                 
                         minHeight={300}

@@ -11,14 +11,15 @@ class FolderItem extends Component {
         }
     }
     render() {
-
+        const offsetHeight=0
+        const offsetWidth=300
         const { title, file, component } = this.props;
         let ChildComponent = component || File;
         return (
             <Rnd
                 className='folderwindow'
                 style={{ visibility: this.state.visible ? "visible" : "hidden", position: "absolute" }}
-                default={{ x: 0, y: 0, width: 300, height: 300 }}
+                default={{ x: Math.floor(Math.random()*(window.innerWidth/2-offsetWidth)), y: Math.floor(Math.random()*(window.innerHeight-offsetHeight)), width: 300, height: 300 }}
                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                 minHeight={300}
                 minWidth={300}
