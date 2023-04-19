@@ -24,7 +24,9 @@ class FolderItem extends Component {
         const { title, file, component } = this.props;
         let ChildComponent = component || File;
         return (
-            <Rnd
+            <div>
+
+<Rnd
                 className='folderwindow'
                 style={{ zIndex:this.state.zIndex,visibility: this.state.visible ? "visible" : "hidden", position: "absolute" }}
                 default={{ x: Math.floor(Math.random()*(window.innerWidth/2-offsetWidth)), y: Math.floor(Math.random()*(window.innerHeight-offsetHeight)), width: 300, height: 300 }}
@@ -39,11 +41,16 @@ class FolderItem extends Component {
                         this.setState({ visible: false })
                     }}>Delete</button>
                     {file.map(((element, i) => {
+                        if(title==="Blog"){
+                            return React.createElement(ChildComponent, { windowArray: this.props.windowArray, setWindowArray: this.props.setWindowArray, key: element.id, title: element.title, inFolder: [element.id] })
+                        }else{
                         return React.createElement(ChildComponent, { windowArray: this.props.windowArray, setWindowArray: this.props.setWindowArray, key: title + i, title: element.title, inFolder: [title, i] })
+                        }
                     }))
                     }
                 </ul>
             </Rnd>
+            </div>
 
         );
     }
