@@ -49,7 +49,6 @@ function App() {
       })}
 
       <Folder windowArray={windowArray} setWindowArray={setWindowArray} title={"Blog"} file={blog.contents} />
-
     </div>
   );
 }
