@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import Window from "./Window.js"
+import FileIcon from "../img/FileIcon.png"
+import LinkIcon from "../img/Link.png"
 class File extends Component {
   constructor(props) {
     super(props)
@@ -12,8 +13,6 @@ class File extends Component {
     }
   }
   render() {
-    const { component } = this.props;
-    let ChildComponent = component || Window
     const title = this.state.title
     if (this.state.inFolder) {
       return (
@@ -21,20 +20,26 @@ class File extends Component {
           <button type='button' onClick={() => {
             this.props.setWindowArray([...this.props.windowArray,{title:title,inFolder:this.props.inFolder}])
             this.setState({ windowCount: this.state.windowCount + 1 })
-          }}>{title}</button>
+          }}>
+            {this.props.thumbnail?<div className="thumbnailwrapper"><img className="thumbnail" src={this.props.thumbnail} alt="FileIcon"></img><img className="linkicon" src={LinkIcon} alt="linkIcon"></img></div>:<img className="thumbnail" src={FileIcon} alt="FileIcon"></img>}
+            {title}
+            </button>
 
         </li>
       )
     } else {
       return (
         <div className="file">
-          <button type='button' onClick={() => {
-            this.setState({ windowArray: [...this.state.windowArray, this.state.windowCount] })
+          <button
+          style={{
+            color: "white",
+            textShadow:"1px 1px 3px black"
+          }}
+          type='button' onClick={() => {
+            this.props.setWindowArray([...this.props.windowArray,{title:title,inFolder:this.props.inFolder}])
             this.setState({ windowCount: this.state.windowCount + 1 })
-          }}>{title}</button>
-          {this.state.windowArray.map((i) => {
-            return React.createElement(ChildComponent, { key: title + i, title, inFolder: this.props.inFolder })
-          })}
+          }}><img src={FileIcon} alt="FileIcon" /><br/>
+          {title}</button>
         </div>
       )
     }

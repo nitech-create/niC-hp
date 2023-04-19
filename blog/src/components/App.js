@@ -40,9 +40,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello React</h1>
       {folderArray.map((element, i) => {
-        return Array.isArray(element[1]) ? <Folder windowArray={windowArray} setWindowArray={setWindowArray} title={element[0]} file={element[1]} key={i} /> : <File title={element[0]} inFolder={false} key={i} />
+        return Array.isArray(element[1]) ? <Folder windowArray={windowArray} setWindowArray={setWindowArray} title={element[0]} file={element[1]} key={i} /> : <File windowArray={windowArray} setWindowArray={setWindowArray} title={element[0]} inFolder={false} key={i} />
       })}
       {windowArray.map((element, i) => {
         return <Window key={element.title + i + element.inFolder[0]} title={element.title} inFolder={element.inFolder} />

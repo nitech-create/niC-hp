@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import FolderItem from './FolderItem.js'
-
+import FolderIcon from "../img/FolderIcon.png"
 class Folder extends Component {
   constructor(props) {
     super(props)
@@ -21,7 +21,8 @@ class Folder extends Component {
         <button  className='folderbutton' type='button' onClick={() => {
           this.setState({ folderArray: [...this.state.folderArray, this.state.folderCount] })
           this.setState({ folderCount: this.state.folderCount + 1 })
-        }}>{title}</button>
+        }}><img src={FolderIcon} alt="FolderIcon" /><br/>
+        {title}</button>
         {this.state.folderArray.map((i) => {
           return React.createElement(ChildComponent, { windowArray:this.props.windowArray ,setWindowArray:this.props.setWindowArray,key: title + i, file, title })
         })}
