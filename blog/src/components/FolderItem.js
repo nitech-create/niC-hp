@@ -46,7 +46,7 @@ class FolderItem extends Component {
                 <Rnd ref={c => { this.rnd = c }}
                     className='folderwindow'
                     style={{ zIndex: this.state.zIndex, visibility: this.state.visible ? "visible" : "hidden", position: "absolute" }}
-                    default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: 300, height: 300 }}
+                    default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "400", height: "300" }}
                     enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                     minHeight={300}
                     minWidth={300}

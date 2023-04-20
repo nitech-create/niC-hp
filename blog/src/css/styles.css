@@ -1,7 +1,20 @@
 body{
+    margin: 0;
+    padding: 10px;
+    height: 100vh;
+    width: 100vw;
     font-family: 'MS UI Gothic';
-    background-color: blue;
+    background-color: #5590E8;
     overflow: hidden;
+}
+
+#animation-container{
+    border: 10px solid black;
+}
+
+.App{
+    height: 100vh;
+    width: 100vw;
 }
 
 button, input, select, textarea {
@@ -37,7 +50,8 @@ ul {
 }
 
 .folderwindow{
-    border: 1px solid gray;
+    border: 2px solid blue;
+    box-shadow: 1px 1px 5px black;
     background-color: white;
 }
 
@@ -99,7 +113,8 @@ ul {
 
 .window{
     background-color: white;
-    border: 1px solid gray;
+    border: 2px solid blue;
+    box-shadow: 1px 1px 5px black;
 }
 .thumbnail{
     width: 100%;
@@ -140,7 +155,7 @@ ul {
 }
 
 .windowcontent{
-    width: 100%;
+    width: calc(100%);
     height: calc(100% - 25px);
     margin-top: 25px;
     cursor: default;
@@ -156,9 +171,39 @@ ul {
     flex-wrap: wrap;
 }
 
+.windowinnner{
+    min-height: 100%;
+    min-width: 300px;
+    max-width: 500px;
+    margin: auto;
+    background-color: white;
+    padding: 0 20px;
+}
+
 .postcontent{
+    padding: 0;
     height: 100%;
     overflow: scroll;
+    display: flex;
+    background-color: whitesmoke;
+}
+
+.postcontent h1{
+    margin: 1em 0px;
+    font-size: x-large;
+}
+
+.postcontent h2,h3,h4,h5,h6{
+    margin: 10px 0px;
+    font-size: large;
+}
+
+
+.postcontent img{
+    display: block;
+    margin: 1em 10px 1em 10px;
+    max-width: 90%;
+    max-height: 281px;
 }
 
 /* .resizeHandle{

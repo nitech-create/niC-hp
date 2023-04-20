@@ -53,7 +53,7 @@ class Window extends Component {
             const offsetWidth = 0
             if (!this.state.post) return null
             if (this.props.inFolder.length === 2) {
-                const blackList = ["fieldId", ""]
+                const blackList = ["fieldId", "title"]
                 const postObj = this.state.post[this.props.inFolder[0]][this.props.inFolder[1]]
                 return (
                     <div>
@@ -61,7 +61,7 @@ class Window extends Component {
                         <Rnd ref={c => { this.rnd = c }}
                             className="window"
                             style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                            default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: 300, height: 300 }}
+                            default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "400", height: "300" }}
                             minHeight={300}
                             minWidth={300}
                             enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
@@ -95,18 +95,18 @@ class Window extends Component {
 
                             <div className="windowcontent">
                                 <div className="postcontent">
-
-                                    <h1>{this.state.title}</h1>
-                                    {Object.keys(postObj).filter((item) => {
-                                        return !blackList.includes(item)
-                                    }).map((element, i) => {
-                                        if (postObj[element] !== null && typeof postObj[element] === 'object') {
-                                            return React.createElement("div", { key: i }, <img src={postObj[element].url} alt="profile"></img>)
-                                        } else {
-                                            return React.createElement("div", { key: i }, <div dangerouslySetInnerHTML={{ __html: postObj[element] }}></div>)
-                                        }
-
-                                    })}
+                                    <content className="windowinnner">
+                                        <h1>{this.state.title}</h1>
+                                        {Object.keys(postObj).filter((item) => {
+                                            return !blackList.includes(item)
+                                        }).map((element, i) => {
+                                            if (postObj[element] !== null && typeof postObj[element] === 'object') {
+                                                return React.createElement("div", { key: i }, <img src={postObj[element].url} alt="profile"></img>)
+                                            } else {
+                                                return React.createElement("div", { key: i }, <div dangerouslySetInnerHTML={{ __html: postObj[element] }}></div>)
+                                            }
+                                        })}
+                                    </content>
                                 </div>
                             </div>
 
@@ -121,7 +121,7 @@ class Window extends Component {
                         <Rnd ref={c => { this.rnd = c }}
                             className="window"
                             style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                            default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: 300, height: 300 }}
+                            default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "400", height: "300" }}
                             minHeight={300}
                             minWidth={300}
                             enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
@@ -164,12 +164,14 @@ class Window extends Component {
                             </div>
                             <div className="windowcontent">
                                 <div className="postcontent">
-                                    <h1>{this.state.title}</h1>
-                                    <div dangerouslySetInnerHTML={{
-                                        __html: this.state.post.contents.filter((element) => {
-                                            return element.id === this.props.inFolder[0]
-                                        })[0].content
-                                    }}></div>
+                                    <content className="windowinnner">
+                                        <h1>{this.state.title}</h1>
+                                        <div dangerouslySetInnerHTML={{
+                                            __html: this.state.post.contents.filter((element) => {
+                                                return element.id === this.props.inFolder[0]
+                                            })[0].content
+                                        }}></div>
+                                    </content>
                                 </div>
 
                             </div>
@@ -184,7 +186,7 @@ class Window extends Component {
                         <Rnd ref={c => { this.rnd = c }}
                             className="window"
                             style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                            default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: 300, height: 300 }}
+                            default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: 400, height: 300 }}
                             enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                             minHeight={300}
                             minWidth={300}
@@ -193,33 +195,35 @@ class Window extends Component {
                             bounds={"window"}
                             cancel=".windowcontent"
                         >                            <div className='topframe'>
-                        <div className='topframeleft'>
-                            <img src={FileIcon} alt="foldericon" />
-                            <p>{this.state.title}</p>
-                        </div>
-                        <div className="topframeright">
-                            {!this.state.fullScreen ?
-                                <button className='screenbutton' type='button' onClick={() => {
-                                    this.fullScreen()
-                                }}><img src={FullScreenIcon} alt="FullScreenIcon" /></button>
+                                <div className='topframeleft'>
+                                    <img src={FileIcon} alt="foldericon" />
+                                    <p>{this.state.title}</p>
+                                </div>
+                                <div className="topframeright">
+                                    {!this.state.fullScreen ?
+                                        <button className='screenbutton' type='button' onClick={() => {
+                                            this.fullScreen()
+                                        }}><img src={FullScreenIcon} alt="FullScreenIcon" /></button>
 
-                                :
+                                        :
 
-                                <button className='screenbutton' type='button' onClick={() => {
-                                    this.normalScreen()
-                                }}><img src={NormalScreenIcon} alt="NormalScreenIcon" /></button>}
-                            <button className='deletebutton' type='button' onClick={() => {
-                                this.setState({ visible: false })
-                            }}><img src={CloseIcon} alt="CloseIcon" /></button>
+                                        <button className='screenbutton' type='button' onClick={() => {
+                                            this.normalScreen()
+                                        }}><img src={NormalScreenIcon} alt="NormalScreenIcon" /></button>}
+                                    <button className='deletebutton' type='button' onClick={() => {
+                                        this.setState({ visible: false })
+                                    }}><img src={CloseIcon} alt="CloseIcon" /></button>
 
-                        </div>
-                    </div>
-                            <div className="windowcontent">
-                            <div className="postcontent">
-                                <h1>{this.state.title}</h1>
-                                {console.log(this.state.post)}
-                                <div dangerouslySetInnerHTML={{ __html: this.state.post[this.state.title] }}></div>
+                                </div>
                             </div>
+                            <div className="windowcontent">
+                                <div className="postcontent">
+                                    <content className="windowinnner">
+                                        <h1>{this.state.title}</h1>
+                                        {console.log(this.state.post)}
+                                        <div dangerouslySetInnerHTML={{ __html: this.state.post[this.state.title] }}></div>
+                                    </content>
+                                </div>
                             </div>
 
 
