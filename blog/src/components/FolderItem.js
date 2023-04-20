@@ -5,6 +5,8 @@ import CloseIcon from "../img/CloseIcon.svg"
 import FolderIcon from '../img/FolderIcon.png'
 import fullScreenIcon from "../img/FullScreen.svg"
 import NormalScreenIcon from "../img/NormalScreen.svg"
+import MyComputer from "../img/MyComputer.png"
+import GoIcon from "../img/Go.png"
 class FolderItem extends Component {
     constructor(props) {
         super(props)
@@ -52,7 +54,7 @@ class FolderItem extends Component {
                     minWidth={300}
                     onClick={this.onClick}
                     onResizeStart={this.onClick}
-                    cancel={"ul"}
+                    cancel={"ul,.windowurl"}
                     bounds={"window"}
                 >
                     <div className='topframe'>
@@ -64,19 +66,40 @@ class FolderItem extends Component {
                             {!this.state.fullScreen ?
                                 <button className='screenbutton' type='button' onClick={() => {
                                     this.fullScreen()
-                                }}><img src={fullScreenIcon} alt="FullScreenIcon" /></button>
+                                }}
+                                onTouchStart={()=>{
+                                    this.fullScreen()
+                                }}
+                                ><img src={fullScreenIcon} alt="FullScreenIcon" /></button>
 
                                 :
 
                                 <button className='screenbutton' type='button' onClick={() => {
                                     this.normalScreen()
-                                }}><img src={NormalScreenIcon} alt="NormalScreenIcon" /></button>}
+                                }}
+                                onTouchStart={()=>{
+                                    this.normalScreen()
+                                }}
+                                ><img src={NormalScreenIcon} alt="NormalScreenIcon" /></button>}
                             <button className='deletebutton' type='button' onClick={() => {
                                 this.setState({ visible: false })
-                            }}><img src={CloseIcon} alt="CloseIcon" /></button>
+                            }}
+                            onTouchStart={()=>{
+                                this.setState({visible:false})
+                            }}
+                            ><img src={CloseIcon} alt="CloseIcon" /></button>
 
                         </div>
                     </div>
+                    <div className="windowurl">
+                                <p style={{color:"gray"}}>Address</p>
+                                <img src={MyComputer} alt="Mycomputer"/>
+                                <input type="text" value={"C:\\Users\\niC\\"} readOnly />
+                                <button className="sharebutton">
+                                    <img src={GoIcon} alt="Go"></img>
+                                    <p>Go</p>
+                                </button>
+                            </div>
                     <div className='windowcontent'>
                         <ul>
                             {file.map(((element, i) => {

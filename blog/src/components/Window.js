@@ -5,6 +5,8 @@ import CloseIcon from "../img/CloseIcon.svg"
 import FullScreenIcon from "../img/FullScreen.svg"
 import NormalScreenIcon from "../img/NormalScreen.svg"
 import FileIcon from "../img/FileIcon.png"
+import InternetIcon from "../img/Internet.png"
+import Share from "../img/Share.png"
 const baseUrl = "https://nitech-create.microcms.io/api/v1/"
 
 const headers = {
@@ -40,7 +42,6 @@ class Window extends Component {
         this.rnd.updatePosition({ x: 0, y: 0 })
         this.setState({ fullScreen: true })
     }
-
     normalScreen = () => {
         console.log(this.rnd)
         this.rnd.updateSize({ width: this.rnd.props.default.width, height: this.rnd.props.default.height })
@@ -68,7 +69,7 @@ class Window extends Component {
                             onClick={this.onClick}
                             onResizeStart={this.onClick}
                             bounds={"window"}
-                            cancel=".windowcontent"
+                            cancel=".windowcontent,.windowurl"
                         >
                             <div className='topframe'>
                                 <div className='topframeleft'>
@@ -76,23 +77,41 @@ class Window extends Component {
                                     <p>{this.state.title}</p>
                                 </div>
                                 <div>
+
                                     {!this.state.fullScreen ?
                                         <button className='screenbutton' type='button' onClick={() => {
                                             this.fullScreen()
-                                        }}><img src={FullScreenIcon} alt="FullScreenIcon" /></button>
+                                        }}
+                                            onTouchStart={() => {
+                                                this.fullScreen()
+                                            }}><img src={FullScreenIcon} alt="FullScreenIcon" /></button>
 
                                         :
 
                                         <button className='screenbutton' type='button' onClick={() => {
                                             this.normalScreen()
-                                        }}><img src={NormalScreenIcon} alt="NormalScreenIcon" /></button>}
+                                        }}
+                                            onTouchStart={() => {
+                                                this.normalScreen()
+                                            }}><img src={NormalScreenIcon} alt="NormalScreenIcon" /></button>}
                                     <button className='deletebutton' type='button' onClick={() => {
                                         this.setState({ visible: false })
-                                    }}><img src={CloseIcon} alt="CloseIcon" /></button>
+                                    }}
+                                        onTouchStart={() => {
+                                            this.setState({ visible: false })
+                                        }}><img src={CloseIcon} alt="CloseIcon" /></button>
 
                                 </div>
                             </div>
-
+                            <div className="windowurl">
+                                <p style={{color:"gray"}}>Address</p>
+                                <img src={InternetIcon} alt="InternetIcon" />
+                                <input type="text" value={"https://nitech-create.com/member/"+this.state.title} readOnly />
+                                <button className="sharebutton">
+                                <img src={Share} alt="shareImg" />
+                                <p>Share</p>
+                                </button>
+                            </div>
                             <div className="windowcontent">
                                 <div className="postcontent">
                                     <content className="windowinnner">
@@ -138,7 +157,7 @@ class Window extends Component {
                                 topRight: "resizeHandle",
                             }}
                             bounds={"window"}
-                            cancel=".windowcontent"
+                            cancel=".windowcontent,.windowurl"
                         >
                             <div className='topframe'>
                                 <div className='topframeleft'>
@@ -149,18 +168,36 @@ class Window extends Component {
                                     {!this.state.fullScreen ?
                                         <button className='screenbutton' type='button' onClick={() => {
                                             this.fullScreen()
-                                        }}><img src={FullScreenIcon} alt="FullScreenIcon" /></button>
+                                        }}
+                                            onTouchStart={() => {
+                                                this.fullScreen()
+                                            }}><img src={FullScreenIcon} alt="FullScreenIcon" /></button>
 
                                         :
 
                                         <button className='screenbutton' type='button' onClick={() => {
                                             this.normalScreen()
-                                        }}><img src={NormalScreenIcon} alt="NormalScreenIcon" /></button>}
+                                        }}
+                                            onTouchStart={() => {
+                                                this.normalScreen()
+                                            }}><img src={NormalScreenIcon} alt="NormalScreenIcon" /></button>}
                                     <button className='deletebutton' type='button' onClick={() => {
                                         this.setState({ visible: false })
-                                    }}><img src={CloseIcon} alt="CloseIcon" /></button>
+                                    }}
+                                        onTouchStart={() => {
+                                            this.setState({ visible: false })
+                                        }}><img src={CloseIcon} alt="CloseIcon" /></button>
 
                                 </div>
+                            </div>                            
+                            <div className="windowurl">
+                                <p style={{color:"gray"}}>Address</p>
+                                <img src={InternetIcon} alt="InternetIcon" />
+                                <input type="text" value={"https://nitech-create.com/"+this.props.inFolder[0]} readOnly />
+                                <button className="sharebutton">
+                                <img src={Share} alt="shareImg" />
+                                <p>Share</p>
+                                </button>
                             </div>
                             <div className="windowcontent">
                                 <div className="postcontent">
@@ -193,8 +230,9 @@ class Window extends Component {
                             onClick={this.onClick}
                             onResizeStart={this.onClick}
                             bounds={"window"}
-                            cancel=".windowcontent"
-                        >                            <div className='topframe'>
+                            cancel=".windowcontent,.windowurl"
+                        >
+                            <div className='topframe'>
                                 <div className='topframeleft'>
                                     <img src={FileIcon} alt="foldericon" />
                                     <p>{this.state.title}</p>
@@ -203,18 +241,36 @@ class Window extends Component {
                                     {!this.state.fullScreen ?
                                         <button className='screenbutton' type='button' onClick={() => {
                                             this.fullScreen()
-                                        }}><img src={FullScreenIcon} alt="FullScreenIcon" /></button>
+                                        }}
+                                            onTouchStart={() => {
+                                                this.fullScreen()
+                                            }}><img src={FullScreenIcon} alt="FullScreenIcon" /></button>
 
                                         :
 
                                         <button className='screenbutton' type='button' onClick={() => {
                                             this.normalScreen()
-                                        }}><img src={NormalScreenIcon} alt="NormalScreenIcon" /></button>}
+                                        }}
+                                            onTouchStart={() => {
+                                                this.normalScreen()
+                                            }}><img src={NormalScreenIcon} alt="NormalScreenIcon" /></button>}
                                     <button className='deletebutton' type='button' onClick={() => {
                                         this.setState({ visible: false })
-                                    }}><img src={CloseIcon} alt="CloseIcon" /></button>
+                                    }}
+                                        onTouchStart={() => {
+                                            this.setState({ visible: false })
+                                        }}><img src={CloseIcon} alt="CloseIcon" /></button>
 
                                 </div>
+                            </div>
+                            <div className="windowurl">
+                                <p style={{color:"gray"}}>Address</p>
+                                <img src={InternetIcon} alt="InternetIcon" />
+                                <input type="text" value={"https://nitech-create.com/"+this.state.title} readOnly />
+                                <button className="sharebutton">
+                                <img src={Share} alt="shareImg" />
+                                <p>Share</p>
+                                </button>
                             </div>
                             <div className="windowcontent">
                                 <div className="postcontent">
@@ -225,8 +281,6 @@ class Window extends Component {
                                     </content>
                                 </div>
                             </div>
-
-
                         </Rnd>
 
                     </div>
