@@ -43,7 +43,6 @@ class Window extends Component {
         this.setState({ fullScreen: true })
     }
     normalScreen = () => {
-        console.log(this.rnd)
         this.rnd.updateSize({ width: this.rnd.props.default.width, height: this.rnd.props.default.height })
         this.rnd.updatePosition({ x: Math.random() * (window.innerWidth - 500), y: Math.random() * (window.innerHeight - 500) })
         this.setState({ fullScreen: false })
@@ -106,7 +105,7 @@ class Window extends Component {
                             <div className="windowurl">
                                 <p style={{color:"gray"}}>Address</p>
                                 <img src={InternetIcon} alt="InternetIcon" />
-                                <input type="text" value={"https://nitech-create.com/member/"+this.state.title} readOnly />
+                                <input type="text" value={"https://nitech-create.com/"+this.props.inFolder[0]+"/"+this.state.title} readOnly />
                                 <button className="sharebutton">
                                 <img src={Share} alt="shareImg" />
                                 <p>Share</p>
@@ -114,7 +113,7 @@ class Window extends Component {
                             </div>
                             <div className="windowcontent">
                                 <div className="postcontent">
-                                    <content className="windowinnner">
+                                    <div className="windowinnner">
                                         <h1>{this.state.title}</h1>
                                         {Object.keys(postObj).filter((item) => {
                                             return !blackList.includes(item)
@@ -125,7 +124,7 @@ class Window extends Component {
                                                 return React.createElement("div", { key: i }, <div dangerouslySetInnerHTML={{ __html: postObj[element] }}></div>)
                                             }
                                         })}
-                                    </content>
+                                    </div>
                                 </div>
                             </div>
 
@@ -193,7 +192,7 @@ class Window extends Component {
                             <div className="windowurl">
                                 <p style={{color:"gray"}}>Address</p>
                                 <img src={InternetIcon} alt="InternetIcon" />
-                                <input type="text" value={"https://nitech-create.com/"+this.props.inFolder[0]} readOnly />
+                                <input type="text" value={"https://nitech-create.com/blog/"+this.props.inFolder[0]} readOnly />
                                 <button className="sharebutton">
                                 <img src={Share} alt="shareImg" />
                                 <p>Share</p>
@@ -201,14 +200,14 @@ class Window extends Component {
                             </div>
                             <div className="windowcontent">
                                 <div className="postcontent">
-                                    <content className="windowinnner">
+                                    <div className="windowinnner">
                                         <h1>{this.state.title}</h1>
                                         <div dangerouslySetInnerHTML={{
                                             __html: this.state.post.contents.filter((element) => {
                                                 return element.id === this.props.inFolder[0]
                                             })[0].content
                                         }}></div>
-                                    </content>
+                                    </div>
                                 </div>
 
                             </div>
@@ -274,11 +273,10 @@ class Window extends Component {
                             </div>
                             <div className="windowcontent">
                                 <div className="postcontent">
-                                    <content className="windowinnner">
+                                    <div className="windowinnner">
                                         <h1>{this.state.title}</h1>
-                                        {console.log(this.state.post)}
                                         <div dangerouslySetInnerHTML={{ __html: this.state.post[this.state.title] }}></div>
-                                    </content>
+                                    </div>
                                 </div>
                             </div>
                         </Rnd>

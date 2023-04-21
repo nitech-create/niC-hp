@@ -31,7 +31,6 @@ class FolderItem extends Component {
     }
 
     normalScreen = () => {
-        console.log(this.rnd)
         this.rnd.updateSize({ width: this.rnd.props.default.width, height: this.rnd.props.default.height })
         this.rnd.updatePosition({ x: Math.random() * (window.innerWidth - 500), y: Math.random() * (window.innerHeight - 500) })
         this.setState({ fullScreen: false })
@@ -103,7 +102,7 @@ class FolderItem extends Component {
                     <div className='windowcontent'>
                         <ul>
                             {file.map(((element, i) => {
-                                if (title === "Blog") {
+                                if (title === "blog") {
                                     return React.createElement(ChildComponent, { windowArray: this.props.windowArray, setWindowArray: this.props.setWindowArray, key: element.id, title: element.title, inFolder: [element.id] })
                                 } else if (title === "member") {
                                     return React.createElement(ChildComponent, { windowArray: this.props.windowArray, setWindowArray: this.props.setWindowArray, key: title + i, title: element.title, inFolder: [title, i], thumbnail: element.picture.url })
@@ -115,11 +114,8 @@ class FolderItem extends Component {
                             }
                         </ul>
                     </div>
-
-
                 </Rnd>
             </div>
-
         );
     }
 }
