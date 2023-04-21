@@ -17,9 +17,9 @@ function App() {
   useEffect(() => {
     axios.get(baseUrl + "others", { headers: headers }).then((response) => {
       setPost(response.data)
-      FromUrl2Window(response.data,null)
+      FromUrl2Window(response.data, null)
     }).catch(error => console.log(error))
-    
+
     //eslint無効
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -27,10 +27,10 @@ function App() {
   useEffect(() => {
     axios.get(baseUrl + "blogs", { headers: headers }).then((response) => {
       setBlog(response.data)
-      
-      FromUrl2Window(null,response.data)
+
+      FromUrl2Window(null, response.data)
     }).catch(error => console.log(error))
-    
+
     //eslint無効
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -61,39 +61,78 @@ function App() {
     </div>
   );
 
-  function FromUrl2Window(post,blog) {
-    const pathArr = window.location.pathname.split("/").filter((element)=>{
-      return element!==""
+  function FromUrl2Window(post, blog) {
+    const pathArr = window.location.pathname.split("/").filter((element) => {
+      return element !== ""
     })
-    if(pathArr.length === 1){
-      setWindowArray([...windowArray,{title:decodeURI(pathArr[0]),inFolder:false}])
-    }else if(pathArr.length === 2&&post!==null&&pathArr[0]!=="blog"){
-      setWindowArray([...windowArray,{title:decodeURI(pathArr[1]),inFolder:[decodeURI(pathArr[0]),
-        post[pathArr[0]].map((element)=>{
-        return element.title === decodeURI(pathArr[1])
-      }).indexOf(true)]}])
-    }else if(pathArr.length === 2&&blog!==null&&pathArr[0]==="blog"){
-        if(blog.contents.filter((element)=>{
-          return element.id === pathArr[1]
-        })[0]===undefined){
 
-          
-          setWindowArray([...windowArray,{
-            title: null,
-           inFolder:[decodeURI(pathArr[1])]}])
 
-        }else{
-          setWindowArray([...windowArray,{
-            title:
-            blog.contents.filter((element)=>{
+    if (pathArr.length < 3) {
+
+      if (isFirstExist(pathArr[0], post, blog)) {
+        if (pathArr.length === 1) {
+          setWindowArray([...windowArray, { title: decodeURI(pathArr[0]), inFolder: false }]) 
+        } else if (pathArr.length === 2 && post !== null && pathArr[0] !== "blog") {
+          if(Array.isArray(post[pathArr[0]])){
+            setWindowArray([...windowArray, {
+              title: decodeURI(pathArr[1]), inFolder: [decodeURI(pathArr[0]),
+              post[pathArr[0]].map((element) => {
+                return element.title === decodeURI(pathArr[1])
+              }).indexOf(true)]
+            }])
+          }else{
+            setWindowArray([...windowArray, {
+              title: null,
+              inFolder: [window.location.path]
+            }])
+          }
+
+        } else if (pathArr.length === 2 && blog !== null && pathArr[0] === "blog") {
+          if (blog.contents.filter((element) => {
             return element.id === pathArr[1]
-          })[0].title,
-           inFolder:[decodeURI(pathArr[1])]}])
+          })[0] === undefined) {
+
+
+            setWindowArray([...windowArray, {
+              title: null,
+              inFolder: [decodeURI(pathArr[1])]
+            }])
+
+          } else {
+            setWindowArray([...windowArray, {
+              title:
+                blog.contents.filter((element) => {
+                  return element.id === pathArr[1]
+                })[0].title,
+              inFolder: [decodeURI(pathArr[1])]
+            }])
+          }
+        } else {
+          //do nothing
         }
-    }else{
-      //do nothing
+      } else {
+        setWindowArray([...windowArray, {
+          title: null,
+          inFolder: [window.location.path]
+        }])
+      }
+    } else {
+      setWindowArray([...windowArray, {
+        title: null,
+        inFolder: [window.location.path]
+      }])
+    }
+
+  }
+
+  function isFirstExist(path, post, blog) {
+    if (post) {
+      return post[path]
+    } else if (blog) {
+      return true
     }
   }
+
 }
 
 

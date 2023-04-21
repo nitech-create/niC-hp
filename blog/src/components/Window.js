@@ -48,8 +48,8 @@ class Window extends Component {
         this.setState({ fullScreen: false })
     }
     isExist(title, inFolder) {
-        if (inFolder.length === 2) {
-            console.log()
+        
+        if (inFolder.length === 2) { 
             if(this.state.post[this.state.inFolder[0]].filter((element)=>{
                 return element.title === this.state.title
             }).length === 0){
@@ -60,7 +60,11 @@ class Window extends Component {
         } else if (inFolder.length === 1) {
             return title
         } else {
-            return this.state.post[this.state.title]
+            if(typeof this.state.post[this.state.title][0]==="object"){
+                return false
+            }else{
+                return this.state.post[this.state.title]
+            }
         }
     }
 
