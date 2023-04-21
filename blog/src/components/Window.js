@@ -127,7 +127,9 @@ class Window extends Component {
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
                                     <input type="text" value={"https://nitech-create.com/" + this.props.inFolder[0] + "/" + this.state.title} readOnly />
-                                    <button className="sharebutton">
+                                    <button className="sharebutton" onClick={()=>{
+                                        window.open("http://twitter.com/share?url=https://nitech-create.com/"+ this.props.inFolder[0] + "/" + this.state.title)
+                                    }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
                                     </button>
@@ -186,7 +188,8 @@ class Window extends Component {
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
                                     <input type="text" value={window.location.href} readOnly />
-                                    <button className="sharebutton">
+                                    <button className="sharebutton" onClick={()=>{
+                                    }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
                                     </button>
@@ -268,7 +271,9 @@ class Window extends Component {
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
                                     <input type="text" value={"https://nitech-create.com/blog/" + this.props.inFolder[0]} readOnly />
-                                    <button className="sharebutton">
+                                    <button className="sharebutton" onClick={()=>{
+                                        window.open("http://twitter.com/share?url=https://nitech-create.com/blog/"+ this.props.inFolder[0])
+                                    }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
                                     </button>
@@ -324,7 +329,8 @@ class Window extends Component {
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
                                     <input type="text" value={window.location.href} readOnly />
-                                    <button className="sharebutton">
+                                    <button className="sharebutton" onClick={()=>{
+                                    }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
                                     </button>
@@ -395,7 +401,9 @@ class Window extends Component {
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
                                     <input type="text" value={"https://nitech-create.com/" + this.state.title} readOnly />
-                                    <button className="sharebutton">
+                                    <button className="sharebutton" onClick={()=>{
+                                        window.open("http://twitter.com/share?url=https://nitech-create.com/"+this.state.title)
+                                    }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
                                     </button>
@@ -446,7 +454,8 @@ class Window extends Component {
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
                                     <input type="text" value={"https://nitech-create.com/" + this.state.title} readOnly />
-                                    <button className="sharebutton">
+                                    <button className="sharebutton" onClick={()=>{
+                                    }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
                                     </button>
