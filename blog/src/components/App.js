@@ -73,19 +73,27 @@ function App() {
         return element.title === decodeURI(pathArr[1])
       }).indexOf(true)]}])
     }else if(pathArr.length === 2&&blog!==null&&pathArr[0]==="blog"){
-      console.log()
+        if(blog.contents.filter((element)=>{
+          return element.id === pathArr[1]
+        })[0]===undefined){
 
-      setWindowArray([...windowArray,{
-        title:
-        blog.contents.filter((element)=>{
-        return element.id === pathArr[1]
-      })[0].title,
-       inFolder:[decodeURI(pathArr[1])]}])
+          
+          setWindowArray([...windowArray,{
+            title: null,
+           inFolder:[decodeURI(pathArr[1])]}])
+
+        }else{
+          setWindowArray([...windowArray,{
+            title:
+            blog.contents.filter((element)=>{
+            return element.id === pathArr[1]
+          })[0].title,
+           inFolder:[decodeURI(pathArr[1])]}])
+        }
     }else{
       //do nothing
     }
   }
-  
 }
 
 
