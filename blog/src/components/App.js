@@ -66,8 +66,9 @@ function App() {
       return element !== ""
     })
 
-
-    if (pathArr.length < 3) {
+  if(pathArr.length === 0){
+    //do nothing
+  }else if (pathArr.length < 3) {
 
       if (isFirstExist(pathArr[0], post, blog)) {
         if (pathArr.length === 1) {
