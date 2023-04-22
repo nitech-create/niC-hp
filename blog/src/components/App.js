@@ -4,7 +4,6 @@ import File from "./File.js"
 import axios from "axios"
 import Window from "./Window.js"
 import LogoImg from "../img/LogoImg.png"
-import {useLocation} from "react-router-dom"
 import {Helmet} from "react-helmet"
 const headers = {
   "X-MICROCMS-API-KEY": "38a97b930fe94fb181f45abfb215f4886c60"
@@ -76,9 +75,8 @@ function App() {
     
     const url =new URL(window.location.href)
     const params =new URLSearchParams(url.search)
-    console.log(params.get("window"))
-    const pathArr = params.get("window").split("/").filter((element) => {
-      return element !== ""
+    const pathArr = decodeURI(params.get("window")).split("/").filter((element) => {
+      return element !== "" && element !== "null"
     })
 
   if(pathArr.length === 0){
@@ -150,8 +148,5 @@ function App() {
   }
 
 }
-
-
-
 
 export default App

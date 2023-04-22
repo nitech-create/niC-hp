@@ -48,21 +48,21 @@ class Window extends Component {
         this.setState({ fullScreen: false })
     }
     isExist(title, inFolder) {
-        
-        if (inFolder.length === 2) { 
-            if(this.state.post[this.state.inFolder[0]].filter((element)=>{
+
+        if (inFolder.length === 2) {
+            if (this.state.post[this.state.inFolder[0]].filter((element) => {
                 return element.title === this.state.title
-            }).length === 0){
+            }).length === 0) {
                 return false
-            }else{
+            } else {
                 return true
             }
         } else if (inFolder.length === 1) {
             return title
         } else {
-            if(typeof this.state.post[this.state.title][0]==="object"){
+            if (typeof this.state.post[this.state.title][0] === "object") {
                 return false
-            }else{
+            } else {
                 return this.state.post[this.state.title]
             }
         }
@@ -76,10 +76,10 @@ class Window extends Component {
             if (this.props.inFolder.length === 2) {
                 const blackList = ["fieldId", "title"]
                 const postObj = this.state.post[this.props.inFolder[0]][this.props.inFolder[1]]
-                if(this.isExist(this.state.title,this.state.inFolder)){
+                if (this.isExist(this.state.title, this.state.inFolder)) {
                     return (
                         <div>
-                            
+
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
@@ -98,7 +98,7 @@ class Window extends Component {
                                         <p>{this.state.title}</p>
                                     </div>
                                     <div>
-    
+
                                         {!this.state.fullScreen ?
                                             <button className='screenbutton' type='button' onClick={() => {
                                                 this.fullScreen()
@@ -106,9 +106,9 @@ class Window extends Component {
                                                 onTouchStart={() => {
                                                     this.fullScreen()
                                                 }}><img src={FullScreenIcon} alt="FullScreenIcon" /></button>
-    
+
                                             :
-    
+
                                             <button className='screenbutton' type='button' onClick={() => {
                                                 this.normalScreen()
                                             }}
@@ -126,9 +126,9 @@ class Window extends Component {
                                 <div className="windowurl">
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
-                                    <input type="text" value={"https://nitech-create.com/?window=" + this.props.inFolder[0] + "/" + this.state.title} readOnly />
-                                    <button className="sharebutton" onClick={()=>{
-                                        window.open("http://twitter.com/share?url=https://nitech-create.com/?window="+ this.props.inFolder[0] + "/" + this.state.title)
+                                    <input size={1} type="text" value={"https://nitech-create.com/?window=" + this.props.inFolder[0] + "/" + encodeURI(this.state.title)} readOnly />
+                                    <button className="sharebutton" onClick={() => {
+                                        window.open(encodeURI("http://twitter.com/intent/tweet?url=https://nitech-create.com/?window=" + this.props.inFolder[0] + "/" + encodeURI(this.state.title)))
                                     }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
@@ -150,11 +150,11 @@ class Window extends Component {
                                         </div>
                                     </div>
                                 </div>
-    
+
                             </Rnd>
                         </div>
                     )
-                }else{
+                } else {
                     return (
                         <div>
                             <Rnd ref={c => { this.rnd = c }}
@@ -187,8 +187,8 @@ class Window extends Component {
                                 <div className="windowurl">
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
-                                    <input type="text" value={window.location.href} readOnly />
-                                    <button className="sharebutton" onClick={()=>{
+                                    <input size={1} type="text" value={window.location.href} readOnly />
+                                    <button className="sharebutton" onClick={() => {
                                     }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
@@ -198,7 +198,7 @@ class Window extends Component {
                                     <div className="postcontent">
                                         <div className="windowinnner">
                                             <h1>ERROR 404 Not Found</h1>
-                                            <p>https://nitech-create.com/?window={this.state.inFolder[0]+"/"+this.state.title} は見つかりませんでした。</p>
+                                            <p>https://nitech-create.com/?window={this.state.inFolder[0] + "/" + encodeURI(this.state.title)} は見つかりませんでした。</p>
                                             <p>URLを確認してください。</p>
                                         </div>
                                     </div>
@@ -210,10 +210,10 @@ class Window extends Component {
 
                 }
             } else if (this.props.inFolder.length === 1) {
-                if(this.isExist(this.state.title,this.state.inFolder)){
+                if (this.isExist(this.state.title, this.state.inFolder)) {
                     return (
                         <div>
-    
+
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
@@ -249,9 +249,9 @@ class Window extends Component {
                                                 onTouchStart={() => {
                                                     this.fullScreen()
                                                 }}><img src={FullScreenIcon} alt="FullScreenIcon" /></button>
-    
+
                                             :
-    
+
                                             <button className='screenbutton' type='button' onClick={() => {
                                                 this.normalScreen()
                                             }}
@@ -264,15 +264,15 @@ class Window extends Component {
                                             onTouchStart={() => {
                                                 this.setState({ visible: false })
                                             }}><img src={CloseIcon} alt="CloseIcon" /></button>
-    
+
                                     </div>
                                 </div>
                                 <div className="windowurl">
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
-                                    <input type="text" value={"https://nitech-create.com/?window=blog/" + this.props.inFolder[0]} readOnly />
-                                    <button className="sharebutton" onClick={()=>{
-                                        window.open("http://twitter.com/share?url=https://nitech-create.com/?window=blog/"+ this.props.inFolder[0])
+                                    <input size={1} type="text" value={"https://nitech-create.com/?window=blog/" + encodeURI(this.props.inFolder[0])} readOnly />
+                                    <button className="sharebutton" onClick={() => {
+                                        window.open("http://twitter.com/intent/tweet?url=https://nitech-create.com/?window=blog/" + encodeURI(this.props.inFolder[0]))
                                     }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
@@ -289,13 +289,13 @@ class Window extends Component {
                                             }}></div>
                                         </div>
                                     </div>
-    
+
                                 </div>
-    
+
                             </Rnd>
                         </div>
                     )
-                }else{
+                } else {
                     return (
                         <div>
                             <Rnd ref={c => { this.rnd = c }}
@@ -328,8 +328,8 @@ class Window extends Component {
                                 <div className="windowurl">
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
-                                    <input type="text" value={window.location.href} readOnly />
-                                    <button className="sharebutton" onClick={()=>{
+                                    <input size={1} type="text" value={window.location.href} readOnly />
+                                    <button className="sharebutton" onClick={() => {
                                     }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
@@ -400,9 +400,9 @@ class Window extends Component {
                                 <div className="windowurl">
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
-                                    <input type="text" value={"https://nitech-create.com/?window=" + this.state.title} readOnly />
-                                    <button className="sharebutton" onClick={()=>{
-                                        window.open("http://twitter.com/share?url=https://nitech-create.com/?window="+this.state.title)
+                                    <input size={1} type="text" value={"https://nitech-create.com/?window=" + encodeURI(this.state.title)} readOnly />
+                                    <button className="sharebutton" onClick={() => {
+                                        window.open("http://twitter.com/intent/tweet?url=https://nitech-create.com/?window=" + encodeURI(this.state.title))
                                     }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
@@ -453,8 +453,8 @@ class Window extends Component {
                                 <div className="windowurl">
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
-                                    <input type="text" value={"https://nitech-create.com/?window=" + this.state.title} readOnly />
-                                    <button className="sharebutton" onClick={()=>{
+                                    <input size={1} type="text" value={"https://nitech-create.com/?window=" + encodeURI(this.state.title)} readOnly />
+                                    <button className="sharebutton" onClick={() => {
                                     }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
@@ -464,7 +464,7 @@ class Window extends Component {
                                     <div className="postcontent">
                                         <div className="windowinnner">
                                             <h1>ERROR 404 Not Found</h1>
-                                            <p>https://nitech-create.com/?window={this.state.title} は見つかりませんでした。</p>
+                                            <p>https://nitech-create.com/?window={encodeURI(this.state.title)} は見つかりませんでした。</p>
                                             <p>URLを確認してください。</p>
                                         </div>
                                     </div>

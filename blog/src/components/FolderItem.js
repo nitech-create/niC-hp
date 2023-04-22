@@ -93,7 +93,7 @@ class FolderItem extends Component {
                     <div className="windowurl">
                                 <p style={{color:"gray"}}>Address</p>
                                 <img src={MyComputer} alt="Mycomputer"/>
-                                <input type="text" value={"C:\\Users\\niC\\"+title} readOnly />
+                                <input size={1} type="text" value={"C:\\Users\\niC\\"+title} readOnly />
                                 <button className="sharebutton">
                                     <img src={GoIcon} alt="Go"></img>
                                     <p>Go</p>
