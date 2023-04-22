@@ -126,9 +126,9 @@ class Window extends Component {
                                 <div className="windowurl">
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
-                                    <input type="text" value={"https://nitech-create.com/" + this.props.inFolder[0] + "/" + this.state.title} readOnly />
+                                    <input type="text" value={"https://nitech-create.com/?window=" + this.props.inFolder[0] + "/" + this.state.title} readOnly />
                                     <button className="sharebutton" onClick={()=>{
-                                        window.open("http://twitter.com/share?url=https://nitech-create.com/"+ this.props.inFolder[0] + "/" + this.state.title)
+                                        window.open("http://twitter.com/share?url=https://nitech-create.com/?window="+ this.props.inFolder[0] + "/" + this.state.title)
                                     }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
@@ -198,7 +198,7 @@ class Window extends Component {
                                     <div className="postcontent">
                                         <div className="windowinnner">
                                             <h1>ERROR 404 Not Found</h1>
-                                            <p>https://nitech-create.com/{this.state.inFolder[0]+"/"+this.state.title} は見つかりませんでした。</p>
+                                            <p>https://nitech-create.com/?window={this.state.inFolder[0]+"/"+this.state.title} は見つかりませんでした。</p>
                                             <p>URLを確認してください。</p>
                                         </div>
                                     </div>
@@ -270,9 +270,9 @@ class Window extends Component {
                                 <div className="windowurl">
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
-                                    <input type="text" value={"https://nitech-create.com/blog/" + this.props.inFolder[0]} readOnly />
+                                    <input type="text" value={"https://nitech-create.com/?window=blog/" + this.props.inFolder[0]} readOnly />
                                     <button className="sharebutton" onClick={()=>{
-                                        window.open("http://twitter.com/share?url=https://nitech-create.com/blog/"+ this.props.inFolder[0])
+                                        window.open("http://twitter.com/share?url=https://nitech-create.com/?window=blog/"+ this.props.inFolder[0])
                                     }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
@@ -400,9 +400,9 @@ class Window extends Component {
                                 <div className="windowurl">
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
-                                    <input type="text" value={"https://nitech-create.com/" + this.state.title} readOnly />
+                                    <input type="text" value={"https://nitech-create.com/?window=" + this.state.title} readOnly />
                                     <button className="sharebutton" onClick={()=>{
-                                        window.open("http://twitter.com/share?url=https://nitech-create.com/"+this.state.title)
+                                        window.open("http://twitter.com/share?url=https://nitech-create.com/?window="+this.state.title)
                                     }}>
                                         <img src={Share} alt="shareImg" />
                                         <p>Share</p>
@@ -453,7 +453,7 @@ class Window extends Component {
                                 <div className="windowurl">
                                     <p style={{ color: "gray" }}>Address</p>
                                     <img src={InternetIcon} alt="InternetIcon" />
-                                    <input type="text" value={"https://nitech-create.com/" + this.state.title} readOnly />
+                                    <input type="text" value={"https://nitech-create.com/?window=" + this.state.title} readOnly />
                                     <button className="sharebutton" onClick={()=>{
                                     }}>
                                         <img src={Share} alt="shareImg" />
@@ -464,7 +464,7 @@ class Window extends Component {
                                     <div className="postcontent">
                                         <div className="windowinnner">
                                             <h1>ERROR 404 Not Found</h1>
-                                            <p>https://nitech-create.com/{this.state.title} は見つかりませんでした。</p>
+                                            <p>https://nitech-create.com/?window={this.state.title} は見つかりませんでした。</p>
                                             <p>URLを確認してください。</p>
                                         </div>
                                     </div>
