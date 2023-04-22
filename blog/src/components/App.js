@@ -55,7 +55,7 @@ function App() {
       title="niC-HP"
       meta={[
         { name: 'twitter:card', content: 'summary' },
-        { property: 'og:image', content: `url(${LogoImg})` },
+        { property: 'og:image', content: `https://nitech-create.com${LogoImg}` },
         { property: 'og:title', content: 'niC-HP' },
         { property: 'og:description', content: 'nitechCreate 名工大生からなる団体のホームページです。' }
       ]}
