@@ -212,6 +212,18 @@ ul {
     max-height: 281px;
 }
 
+.postcontent ul{
+    list-style-type: disc;
+    height: auto;
+    margin-top: auto;
+    overflow: auto;
+    padding-left: 1em;
+    display: block;
+}
+.postcontent li{
+    padding: 0.5em 0;
+}
+
 .windowurl{
     background-color: #EEEAD4;
     position: absolute;
