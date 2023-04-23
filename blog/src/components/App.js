@@ -4,7 +4,6 @@ import File from "./File.js"
 import axios from "axios"
 import Window from "./Window.js"
 import LogoImg from "../img/LogoImg.png"
-import {Helmet} from "react-helmet"
 const headers = {
   "X-MICROCMS-API-KEY": "38a97b930fe94fb181f45abfb215f4886c60"
 }
@@ -51,16 +50,6 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundImage: `url(${LogoImg})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "30%" }}>
-      <Helmet
-      title="niC-HP"
-      meta={[
-        { name: 'twitter:card', content: 'summary' },
-        { property: 'og:image', content: `https://nitech-create.com${LogoImg}` },
-        {property:"og:type",content:"website"},
-        { property: 'og:title', content: 'niC-HP' },
-        { property: 'og:description', content: 'nitechCreate 名工大生からなる団体のホームページです。' }
-      ]}
-      />
       {folderArray.map((element, i) => {
         return Array.isArray(element[1]) ? <Folder windowArray={windowArray} setWindowArray={setWindowArray} title={element[0]} file={element[1]} key={i} /> : <File windowArray={windowArray} setWindowArray={setWindowArray} title={element[0]} inFolder={false} key={i} />
       })}
