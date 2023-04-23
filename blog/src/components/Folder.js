@@ -17,7 +17,7 @@ class Folder extends Component {
     let ChildComponent = component || FolderItem;
     return (
 
-      <div className='folder'>
+      <div className='folder' id={title}>
         <button  className='folderbutton' type='button' onClick={() => {
           this.setState({ folderArray: [...this.state.folderArray, this.state.folderCount] })
           this.setState({ folderCount: this.state.folderCount + 1 })
@@ -27,7 +27,7 @@ class Folder extends Component {
           return React.createElement(ChildComponent, { windowArray:this.props.windowArray ,setWindowArray:this.props.setWindowArray,key: title + i, file, title })
         })}
       </div>
-    );
+    )
   }
 }
 

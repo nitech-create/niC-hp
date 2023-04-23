@@ -44,7 +44,7 @@ class Window extends Component {
     }
     normalScreen = () => {
         this.rnd.updateSize({ width: this.rnd.props.default.width, height: this.rnd.props.default.height })
-        this.rnd.updatePosition({ x: Math.random() * (window.innerWidth - 500), y: Math.random() * (window.innerHeight - 500) })
+        this.rnd.updatePosition({ x: Math.random() * (window.innerWidth - 300), y: Math.random() * (window.innerHeight - 300) })
         this.setState({ fullScreen: false })
     }
     isExist(title, inFolder) {
@@ -70,20 +70,21 @@ class Window extends Component {
 
     render() {
         if (this.state.visible) {
-            const offsetHeight = 450
+            const offsetHeight = 300
             const offsetWidth = 300
             if (!this.state.post) return null
             if (this.props.inFolder.length === 2) {
                 const blackList = ["fieldId", "title"]
                 const postObj = this.state.post[this.props.inFolder[0]][this.props.inFolder[1]]
                 if (this.isExist(this.state.title, this.state.inFolder)) {
+                    console.log(this)
                     return (
-                        <div>
+                        <div style={{position:"absolute",top:0,left:0}}>
 
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)),  width: "300px", height: "300px" }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight - offsetHeight)),  width: "300px", height: "300px" }}
                                 minHeight={300}
                                 minWidth={300}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
@@ -156,11 +157,11 @@ class Window extends Component {
                     )
                 } else {
                     return (
-                        <div>
+                        <div style={{position:"absolute",top:0,left:0}}>
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "300px", height: "300px" }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight - offsetHeight)), width: "300px", height: "300px" }}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                                 minHeight={300}
                                 minWidth={300}
@@ -212,12 +213,12 @@ class Window extends Component {
             } else if (this.props.inFolder.length === 1) {
                 if (this.isExist(this.state.title, this.state.inFolder)) {
                     return (
-                        <div>
+                        <div style={{position:"absolute",top:0,left:0}}>
 
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)),  width: "300px", height: "300px" }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight - offsetHeight)),  width: "300px", height: "300px" }}
                                 minHeight={300}
                                 minWidth={300}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
@@ -297,11 +298,11 @@ class Window extends Component {
                     )
                 } else {
                     return (
-                        <div>
+                        <div style={{position:"absolute",top:0,left:0}}>
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "300px", height: "300px" }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight - offsetHeight)), width: "300px", height: "300px" }}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                                 minHeight={300}
                                 minWidth={300}
@@ -352,12 +353,12 @@ class Window extends Component {
             } else {
                 if (this.isExist(this.state.title, this.state.inFolder)) {
                     return (
-                        <div>
+                        <div style={{position:"absolute",top:0,left:0}}>
 
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "300px", height: "300px" }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight - offsetHeight)), width: "300px", height: "300px" }}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                                 minHeight={300}
                                 minWidth={300}
@@ -422,11 +423,11 @@ class Window extends Component {
                     )
                 } else {
                     return (
-                        <div>
+                        <div style={{position:"absolute",top:0,left:0}}>
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "300px", height: "300px" }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight - offsetHeight)), width: "300px", height: "300px" }}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                                 minHeight={300}
                                 minWidth={300}
