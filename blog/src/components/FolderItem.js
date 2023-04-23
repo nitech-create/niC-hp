@@ -32,13 +32,13 @@ class FolderItem extends Component {
 
     normalScreen = () => {
         this.rnd.updateSize({ width: this.rnd.props.default.width, height: this.rnd.props.default.height })
-        this.rnd.updatePosition({ x: Math.random() * (window.innerWidth - 500), y: Math.random() * (window.innerHeight - 500) })
+        this.rnd.updatePosition({ x: Math.floor(Math.random() * (window.innerWidth - 300)), y: Math.floor(Math.random() * (window.innerHeight / 2 - 500)) })
         this.setState({ fullScreen: false })
     }
 
     render() {
-        const offsetHeight = 500
-        const offsetWidth = 0
+        const offsetHeight = 450
+        const offsetWidth = 300
         const { title, file, component } = this.props;
         let ChildComponent = component || File;
         return (
@@ -47,7 +47,7 @@ class FolderItem extends Component {
                 <Rnd ref={c => { this.rnd = c }}
                     className='folderwindow'
                     style={{ zIndex: this.state.zIndex, visibility: this.state.visible ? "visible" : "hidden", position: "absolute" }}
-                    default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "400", height: "300" }}
+                    default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "40%", height: "40%" }}
                     enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                     minHeight={300}
                     minWidth={300}

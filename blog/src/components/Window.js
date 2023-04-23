@@ -70,8 +70,8 @@ class Window extends Component {
 
     render() {
         if (this.state.visible) {
-            const offsetHeight = 500
-            const offsetWidth = 0
+            const offsetHeight = 450
+            const offsetWidth = 300
             if (!this.state.post) return null
             if (this.props.inFolder.length === 2) {
                 const blackList = ["fieldId", "title"]
@@ -83,7 +83,7 @@ class Window extends Component {
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "400", height: "300" }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)),  width: "40%", height: "40%" }}
                                 minHeight={300}
                                 minWidth={300}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
@@ -160,7 +160,7 @@ class Window extends Component {
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: 400, height: 300 }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "40%", height: "40%" }}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                                 minHeight={300}
                                 minWidth={300}
@@ -217,7 +217,7 @@ class Window extends Component {
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "400", height: "300" }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)),  width: "40%", height: "40%" }}
                                 minHeight={300}
                                 minWidth={300}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
@@ -301,7 +301,7 @@ class Window extends Component {
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: 400, height: 300 }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "40%", height: "40%" }}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                                 minHeight={300}
                                 minWidth={300}
@@ -357,7 +357,7 @@ class Window extends Component {
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: 400, height: 300 }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "40%", height: "40%" }}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                                 minHeight={300}
                                 minWidth={300}
@@ -426,7 +426,7 @@ class Window extends Component {
                             <Rnd ref={c => { this.rnd = c }}
                                 className="window"
                                 style={{ zIndex: this.state.zIndex, visibility: "visible", position: "fixed" }}
-                                default={{ x: Math.floor(Math.random() * (window.innerWidth / 2 - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: 400, height: 300 }}
+                                default={{ x: Math.floor(Math.random() * (window.innerWidth - offsetWidth)), y: Math.floor(Math.random() * (window.innerHeight / 2 - offsetHeight)), width: "40%", height: "40%" }}
                                 enableResizing={{ top: true, right: true, bottom: true, left: true, topRight: true, bottomRight: true, bottomLeft: false, topLeft: true }}
                                 minHeight={300}
                                 minWidth={300}
