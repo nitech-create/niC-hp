@@ -154,6 +154,7 @@ ul {
 .topframeright{
     display: flex;
     flex-wrap: nowrap;
+    min-width: 52px;
 }
 
 .windowcontent{
