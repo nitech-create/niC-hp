@@ -98,7 +98,7 @@ class Window extends Component {
                                         <img src={FileIcon} alt="foldericon" />
                                         <p>{this.state.title}</p>
                                     </div>
-                                    <div>
+                                    <div className="topframeright">
 
                                         {!this.state.fullScreen ?
                                             <button className='screenbutton' type='button' onClick={() => {
