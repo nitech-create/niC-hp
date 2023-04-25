@@ -153,6 +153,7 @@ ul {
 
 .topframeright{
     display: flex;
+    flex-direction: row-reverse;
     flex-wrap: nowrap;
     min-width: 52px;
 }
