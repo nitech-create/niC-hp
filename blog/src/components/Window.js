@@ -77,7 +77,6 @@ class Window extends Component {
                 const blackList = ["fieldId", "title"]
                 const postObj = this.state.post[this.props.inFolder[0]][this.props.inFolder[1]]
                 if (this.isExist(this.state.title, this.state.inFolder)) {
-                    console.log(this)
                     return (
                         <div style={{position:"absolute",top:0,left:0}}>
 
